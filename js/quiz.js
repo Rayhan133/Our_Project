@@ -1,5 +1,6 @@
 window.onload = function(){
- 
+    let preloader = document.getElementById('pre_loader');
+    preloader.style.display = 'none';
         Low_show(0);
      
     }
@@ -548,7 +549,7 @@ let cartCount = 0;
 function next(){
     cartCount = cartCount+1;
     let user_answer = document.querySelector("li.option.active_ans").innerHTML;
-    // document.querySelector(".cart_number_count").innerHTML = cartCount;
+    
     if(question_count == questions_all.length - 1){
         sessionStorage.setItem("time",`${minutes} minutes and ${seconds} seconds`);
         clearInterval(mytime);
@@ -706,8 +707,6 @@ function  addtocart(value){
 
     var json_str = JSON.stringify(value);
     document.cookie = "questions"+[setvalue]+"="+json_str;
-    // var json_str = getCookie('questions'+[setvalue]);
-    // var arr = JSON.parse(json_str);
     document.cookie = "cartValue="+setvalue;
     
    
@@ -719,6 +718,8 @@ function  addtocart(value){
 
 let name = sessionStorage.getItem("name");
 let points = sessionStorage.getItem("points");
+
+
 document.querySelector(".name").innerHTML= name;
 
 

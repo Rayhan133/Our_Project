@@ -1,3 +1,8 @@
+window.onload = function(){
+  let preloader = document.getElementById('pre_loader');
+    preloader.style.display = 'none';
+  showGamilandpass();
+}
 
 
 
@@ -143,6 +148,8 @@
     
     var email = document.getElementById("email_id").value;
     var password = document.getElementById("Password").value;
+    var checkbox = document.getElementById("agree").checked;
+
 
    let  usergmailforlogin = sessionStorage.getItem("usergmail");
    let dec = sessionStorage.getItem("userpassword");
@@ -166,7 +173,16 @@
        else swal("Enter Your password");
      }
     else if(email == usergmailforlogin && password == userpassforlogin){
-     signIn();
+     
+      if(checkbox == true){
+        showGamilandpass();
+        signIn();
+      }
+      else{
+        signIn();
+      }
+     
+      
      
     }
    else {
@@ -174,12 +190,19 @@
     }
      
    }
-
-   
-
-    
-   
+  
     }
+
+
+  function  showGamilandpass(){
+
+    let  usergmailforlogin = sessionStorage.getItem("usergmail");
+    let dec = sessionStorage.getItem("userpassword");
+    userpassforlogin = window.atob(dec);
+
+    document.getElementById("email_id").innerHTML = usergmailforlogin;
+    document.getElementById("Password").innerHTML = userpassforlogin;
+  }
     
   function loginDisplaynone(){
     document.querySelector(".loginbtn").style.display ="none";

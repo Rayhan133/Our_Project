@@ -1,6 +1,7 @@
 
 window.onload = function(){
- 
+  let preloader = document.getElementById('pre_loader');
+    preloader.style.display = 'none';
   added();
    
 }
